@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
-      <button v-if="loggedIn" @click="signout">logout</button>
+      <span>Vue.js PWA FireBase</span>
     </header>
     <main>
+      <div>
+        <a href="javascript:void(0)" v-if="currentUser" @click="signout">logout</a>
+      </div>
       <img src="./assets/logo.png" alt="Vue.js PWA">
       <router-view></router-view>
     </main>
@@ -12,20 +14,22 @@
 </template>
 
 <script>
-import { store } from '@/store/index.js'
+import {mapState} from 'vuex'
+import firebase from 'firebase'
 
 export default {
   name: 'app',
   computed: {
-    loggedIn () {
-      return this.$store.getters.loggedIn
-    }
+    ...mapState(['currentUser'])
   },
-  store,
+  created () {
+  },
   methods: {
     signout () {
-      this.$store.dispatch('logout')
-      this.$router.push('/')
+      firebase.auth().signOut().then(() => {
+        this.$store.dispatch('clearData')
+        this.$router.replace('/')
+      })
     }
   },
   mounted () {

@@ -47,14 +47,17 @@ h1, h2 {
 
 input {
     margin: 10px 0;
-    width: 20%;
+    width: 300px;
     padding: 15px;
 }
 
 button {
     margin-top: 20px;
-    width: 10%;
+    width: 160px;
     cursor: pointer;
     padding: 10px;
+    color: #4DBA87;
+    background-color: #fff;
+    border: 1px solid #4DBA87;
 }
 </style>

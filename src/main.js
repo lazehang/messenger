@@ -3,24 +3,21 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import firebase from 'firebase'
+import { store } from './store/index.js'
+
+const firebase = require('./firebase')
 
 Vue.config.productionTip = false
 
-var config = {
-  apiKey: 'AIzaSyAWtIJ8xxJPb8rwn3ABvp8jVdOh48xSKmg',
-  authDomain: 'messenger-966b0.firebaseapp.com',
-  databaseURL: 'https://<DATABASE_NAME>.firebaseio.com',
-  projectId: 'messenger-966b0'
-}
-
-firebase.initializeApp(config)
-
 /* eslint-disable no-new */
-
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+let app
+firebase.auth.onAuthStateChanged(user => {
+  if (!app) {
+      app = new Vue({
+          el: '#app',
+          router,
+          store,
+          render: h => h(App)
+      })
+  }
 })

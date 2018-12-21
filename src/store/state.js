@@ -1,7 +1,4 @@
 export default {
-    user: {
-        id: '',
-        email: '',
-        token: ''
-    }
+    userProfile: {},
+    currentUser: null
 }

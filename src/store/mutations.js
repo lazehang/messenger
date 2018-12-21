@@ -1,5 +1,8 @@
 export default {
-    setUser (state, payload) {
-        state.user = payload
+    setCurrentUser (state, payload) {
+        state.currentUser = payload
+    },
+    setUserProfile (state, payload) {
+        state.userProfile = payload
     }
 }

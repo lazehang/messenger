@@ -1,5 +1,5 @@
 export default {
     loggedIn (state) {
-        return localStorage.getItem('token')
+        return !!state.user.token
     }
 }
