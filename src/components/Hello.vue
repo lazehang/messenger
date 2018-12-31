@@ -21,12 +21,7 @@ export default {
   },
   methods: {
     async get () {
-      let convoRef = this.$store.state.db.collection('messageList')
-      await convoRef.get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.msg.push(doc.data())
-        })
-      })
+      this.msg.push(this.$store.state.messageList)
     }
   },
   mounted () {

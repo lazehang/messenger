@@ -11,7 +11,7 @@
       :showEmoji="true"
       :showFile="true"
       :participants="participants" />
-      <a href="#" @click.prevent="openChat()">Open the chat window</a>
+      <a href="#" @click.prevent="openChat()">Support</a>
   </div>
 </template>
 <script>
@@ -26,11 +26,6 @@ export default {
       newMessagesCount: 0,
       isChatOpen: false,
       participants: [
-            // {
-            //     id: 'mattmezza',
-            //     name: 'Matteo',
-            //     imageUrl: 'https://avatars3.githubusercontent.com/u/1915989?s=230&v=4'
-            // },
             {
                 id: 'support',
                 name: 'Support',
@@ -43,11 +38,11 @@ export default {
     sendMessage (msg) {
       if (msg.length > 0) {
         this.newMessagesCount = this.isChatOpen ? this.newMessagesCount : this.newMessagesCount + 1
-        this.$store.commit('addMessage', msg)
+        this.$store.dispatch('sendMessage', msg)
       }
     },
     onMessageWasSent (msg) {
-        this.$store.commit('addMessage', msg)
+      this.$store.dispatch('sendMessage', msg)
     },
     openChat () {
       this.isChatOpen = true
@@ -58,7 +53,9 @@ export default {
     }
   },
   created () {
-      this.messageList = this.$store.getters.getMessageList
+      console.log(this.$store.getters.getMessageList)
+      const messages = this.$store.getters.getMessageList
+      this.messageList = messages
   }
 }
 </script>
