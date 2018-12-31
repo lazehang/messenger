@@ -4,7 +4,7 @@ import Hello from '@/components/Hello'
 import Login from '@/components/Login'
 import register from '@/components/Register'
 import firebase from 'firebase'
-
+import Chat from '@/components/Chat'
 Vue.use(Router)
 
 const router = new Router({
@@ -32,6 +32,14 @@ const router = new Router({
       path: '/register',
       name: 'Register',
       component: register
+    },
+    {
+      path: '/chat',
+      name: 'Chat',
+      component: Chat,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })

@@ -12,6 +12,7 @@ Vue.use(Vuex)
 firebase.auth.onAuthStateChanged(function (user) {
     if (user) {
         store.commit('setCurrentUser', user)
+        store.commit('seedDb', firebase.db)
     }
 })
 

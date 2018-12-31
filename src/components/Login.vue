@@ -10,7 +10,7 @@
     <input type="email" v-model="email" placeholder="Email"><br>
     <input type="password" v-model="password" placeholder="Password"><br>
     <button @click="login">Login</button>
-    <p><router-link to="/register">Register</router-link></p>
+    <small><router-link to="/register">Register</router-link></small>
   </div>
 </template>
 

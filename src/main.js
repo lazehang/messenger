@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { store } from './store/index.js'
+import Chat from 'vue-beautiful-chat'
 
 const firebase = require('./firebase')
+
+Vue.use(Chat)
 
 Vue.config.productionTip = false
 

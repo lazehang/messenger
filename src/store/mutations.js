@@ -4,5 +4,11 @@ export default {
     },
     setUserProfile (state, payload) {
         state.userProfile = payload
+    },
+    addMessage (state, payload) {
+        state.messageList.push(payload)
+    },
+    seedDb (state, payload) {
+        state.db = payload
     }
 }
